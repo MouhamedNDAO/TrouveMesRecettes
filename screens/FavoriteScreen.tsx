@@ -23,6 +23,10 @@ const FavoritesScreen = () => {
     loadFavorites(); // Recharger les favoris après modification
   };
 
+  const handleRecipePress = (recipe: Recipe) => {
+    navigation.navigate('RecipeDetail', { recipe });
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Recettes Favorites</Text>
