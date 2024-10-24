@@ -1,6 +1,6 @@
 // Composant des listes des Recettes
 import React from 'react';
-import { FlatList, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { FlatList, TouchableOpacity, Text, StyleSheet, Button } from 'react-native';
 import { Recipe } from '../types/Recipe';
 
 interface RecipeListProps {

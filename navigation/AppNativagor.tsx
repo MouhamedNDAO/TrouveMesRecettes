@@ -1,12 +1,12 @@
 // Navigation de l'application
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
-import RecipeDetailScreen from '../screens/RecipeDetailScreen'; // À créer
-import FavoritesScreen from '../screens/FavoritesScreen'; // À créer
+import RecipeDetailScreen from '../screens/RecipeDetailScreen'; // À créer ne pas oublier, cruciale !!
+import FavoritesScreen from '../screens/FavoriteScreen'; // À créer fait en sorte que le temps te le permet !!
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
   return (
@@ -14,7 +14,6 @@ const AppNavigator = () => {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="RecipeDetail" component={RecipeDetailScreen} />
-        <Stack.Screen name="Favorites" component={FavoritesScreen} />
         <Stack.Screen name="Favorites" component={FavoritesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
