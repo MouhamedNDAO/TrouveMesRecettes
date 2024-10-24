@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 12 ,
     borderBottomRightRadius: 12,
     top:15,
-    left:90,
+    //left:90,
+    alignSelf:'center'
   },
   desc:{
     fontFamily:'bold',
@@ -70,3 +71,4 @@ const styles = StyleSheet.create({
 });
 
 export default HomeScreen;
+

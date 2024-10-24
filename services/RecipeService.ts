@@ -1,4 +1,4 @@
-
+//Configuration cote backEnd
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Recipe } from '../types/Recipe';
 

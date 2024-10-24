@@ -1,23 +1,35 @@
 // Navigation de l'application
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from '../screens/HomeScreen';
-import RecipeDetailScreen from '../screens/RecipeDetailScreen'; // À créer ne pas oublier, cruciale !!
-import FavoritesScreen from '../screens/FavoriteScreen'; // À créer fait en sorte que le temps te le permet !!
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { View, Text } from 'react-native';
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
-const AppNavigator = () => {
+function HomeScreen() {
+  return (
+    <View>
+      <Text>Accueil</Text>
+    </View>
+  );
+}
+
+function SettingsScreen() {
+  return (
+    <View>
+      <Text>Paramètres</Text>
+    </View>
+  );
+}
+
+export default function AppNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="RecipeDetail" component={RecipeDetailScreen} />
-        <Stack.Screen name="Favorites" component={FavoritesScreen} />
-      </Stack.Navigator>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Settings" component={SettingsScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
-};
+}
 
-export default AppNavigator;

@@ -30,7 +30,7 @@ export default function App() {
             fontWeight: 'bold',
           },
         }} />
-        <Stack.Screen name="DETAILS RECETTE" component={RecipeDetailScreen} />
+        {/* <Stack.Screen name="DETAILS RECETTE" component={RecipeDetailScreen} /> */}
         <Stack.Screen name="FAVORIS" component={FavoritesScreen} />
       </Stack.Navigator>
     </NavigationContainer>

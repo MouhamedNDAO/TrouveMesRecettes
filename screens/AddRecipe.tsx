@@ -1,12 +1,13 @@
 // Ecran pour l'ajout d'une recette
 import React, { useEffect, useState } from 'react';
-import { Button, ScrollView, View } from 'react-native';
+import { Alert, Button, ScrollView, View } from 'react-native';
 import RecipeForm from '../components/RecipeForm';
 import RecipeList from '../components/RecipeList';
 import { getRecipes, saveRecipe, deleteRecipe } from '../services/RecipeService';
 import { Recipe } from '../types/Recipe';
 import { useNavigation } from '@react-navigation/native';
 import CostumButtons from '../components/CustomButtons';
+import RecipeDetailScreen from './RecipeDetailScreen';
 
 const AddRecipe = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -30,13 +31,18 @@ const AddRecipe = () => {
     await deleteRecipe(id);
     loadRecipes();
   };
+//affichage popup
+  const popUp = (recipeDetailScreen = RecipeDetailScreen) => {
+    Alert.alert("Recette sélectionnée", Vous avez sélectionné : ${recipeDetailScreen});
+  };
+
 
   //Affichage des Recettes
   return (
     <ScrollView>
       <View>
         <RecipeForm onSubmit={handleAddRecipe} label={''} />
-        <RecipeList recipes={recipes} onDelete={handleDeleteRecipe} onRecipePress={console.log} />
+        <RecipeList recipes={recipes} onDelete={handleDeleteRecipe} onRecipePress={popUp} />
         <CostumButtons/>
       </View>
     </ScrollView>
