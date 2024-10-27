@@ -70,7 +70,7 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ onSubmit,label, theme, onPress 
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 16, backgroundColor: "#892cdc" },
+  container: { padding: 16, backgroundColor: "#C8E1C6", marginTop: '50%', borderRadius:20 },
   input: { marginBottom: 12, borderBottomWidth: 1, padding: 8 },
   buttonContainer: {
     width: 320,

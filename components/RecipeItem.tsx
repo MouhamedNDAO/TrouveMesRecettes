@@ -1,4 +1,4 @@
-// Affichage d'une recette individuellement
+// Affichage des recettes favoris
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Recipe } from '../types/Recipe';
@@ -29,8 +29,10 @@ const RecipeItem: React.FC<RecipeItemProps> = ({ recipe, onPress, onToggleFavori
 const styles = StyleSheet.create({
   item: {
     padding: 16,
-    borderBottomWidth: 1,
+    borderBottomWidth: 2,
     borderBottomColor: '#ccc',
+    borderRadius:20,
+    backgroundColor:'#EFE3E9'
   },
   image: {
     width: '100%',

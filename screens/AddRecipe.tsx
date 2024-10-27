@@ -6,7 +6,6 @@ import RecipeList from '../components/RecipeList';
 import { getRecipes, saveRecipe, deleteRecipe } from '../services/RecipeService';
 import { Recipe } from '../types/Recipe';
 import { useNavigation } from '@react-navigation/native';
-import CostumButtons from '../components/CustomButtons';
 import RecipeDetailScreen from './RecipeDetailScreen';
 
 const AddRecipe = () => {
@@ -25,15 +24,16 @@ const AddRecipe = () => {
   const handleAddRecipe = async (newRecipe: Recipe) => {
     await saveRecipe(newRecipe);
     loadRecipes();
+    Alert.prompt('Recette Ajouter !');
   };
 //Supression d'une recette
-  const handleDeleteRecipe = async (id: string) => {
+ /*  const handleDeleteRecipe = async (id: string) => {
     await deleteRecipe(id);
     loadRecipes();
-  };
+  }; */
 //affichage popup
   const popUp = (recipeDetailScreen = RecipeDetailScreen) => {
-    Alert.alert("Recette sélectionnée", Vous avez sélectionné : ${recipeDetailScreen});
+    //Alert.alert("Recette sélectionnée", Vous avez sélectionné : ${recipeDetailScreen});
   };
 
 
@@ -42,8 +42,6 @@ const AddRecipe = () => {
     <ScrollView>
       <View>
         <RecipeForm onSubmit={handleAddRecipe} label={''} />
-        <RecipeList recipes={recipes} onDelete={handleDeleteRecipe} onRecipePress={popUp} />
-        <CostumButtons/>
       </View>
     </ScrollView>
   );

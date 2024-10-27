@@ -12,6 +12,7 @@ interface RecipeListProps {
 const RecipeList: React.FC<RecipeListProps> = ({ recipes, onRecipePress, onDelete }) => {
   return (
     <FlatList
+    style={styles.full}
       data={recipes}
       keyExtractor={item => item.id}
       renderItem={({ item }) => (
@@ -26,8 +27,9 @@ const RecipeList: React.FC<RecipeListProps> = ({ recipes, onRecipePress, onDelet
 };
 
 const styles = StyleSheet.create({
-  item: { padding: 16, borderBottomWidth: 1, borderBottomColor: '#ccc' },
+  item: { padding: 16, borderBottomWidth: 2, borderBottomColor: '#ccc', borderRadius:20, backgroundColor:'#EFE3E9' },
   title: { fontSize: 18 },
+  full:{margin:8, flex:3, resizeMode:'contain'}
 });
 
 export default RecipeList;
