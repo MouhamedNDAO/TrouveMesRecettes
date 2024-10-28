@@ -1,57 +1,51 @@
 // src/screens/RecipeDetailScreen.tsx
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
-import { Recipe } from '../types/Recipe';
+import { Modal, View, Text, Button, StyleSheet } from 'react-native';
 
-interface RecipeDetailScreenProps {
-  route: { params: { recipe: Recipe } };
-}
-
-const RecipeDetailScreen: React.FC<RecipeDetailScreenProps> = ({ route }) => {
-  const { recipe } = route.params;
-
+const RecipeDetailModal = ({ visible, recipe, onClose }) => {
   return (
-    <View style={styles.container}>
-      {recipe.image ? (
-        <Image source={{ uri: recipe.image }} style={styles.image} />
-      ) : null}
-      <Text style={styles.title}>{recipe.name}</Text>
-      <Text style={styles.category}>{recipe.category}</Text>
-      <Text style={styles.ingredientsHeader}>Ingrédients :</Text>
-      <Text>{recipe.ingredients.join(', ')}</Text>
-      <Text style={styles.instructionsHeader}>Instructions :</Text>
-      <Text>{recipe.instructions}</Text>
-    </View>
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={visible}
+      onRequestClose={onClose}
+    >
+      <View style={styles.overlay}>
+        <View style={styles.modalView}>
+          <Text style={styles.title}>{recipe.name}</Text>
+          <Text style={styles.label}>Ingredients:</Text>
+          <Text>{recipe.ingredients.join(', ')}</Text>
+          <Text style={styles.label}>Instructions:</Text>
+          <Text>{recipe.instructions}</Text>
+          <Button title="Close" onPress={onClose} />
+        </View>
+      </View>
+    </Modal>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  overlay: {
     flex: 1,
-    padding: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
-  image: {
-    width: '100%',
-    height: 200,
-    marginBottom: 16,
+  modalView: {
+    width: '80%',
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 20,
+    elevation: 5,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
   },
-  category: {
-    fontSize: 18,
-    color: '#555',
-    marginBottom: 8,
-  },
-  ingredientsHeader: {
+  label: {
+    marginTop: 10,
     fontWeight: 'bold',
-    marginTop: 16,
-  },
-  instructionsHeader: {
-    fontWeight: 'bold',
-    marginTop: 16,
   },
 });
 
-export default RecipeDetailScreen;
+export default RecipeDetailModal;

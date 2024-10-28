@@ -5,10 +5,34 @@ import RecipeItem from '../components/RecipeItem';
 import { getRecipes, toggleFavorite } from '../services/RecipeService';
 import { Recipe } from '../types/Recipe';
 import { useNavigation } from '@react-navigation/native';
+import RecipeDetailScreen from './RecipeDetailScreen';
 
 const FavoritesScreen = () => {
   const [favorites, setFavorites] = useState<Recipe[]>([]);
-  const navigation = useNavigation();
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = (recipe) => {
+    setSelectedRecipe(recipe);
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+    setSelectedRecipe(null);
+  };
+
+useEffect(() => {
+  loadRecipes();
+  
+  const fetchRecipes = async () => {
+    const data = await getRecipes();
+    setRecipes(data);
+  };
+
+  fetchRecipes();
+}, []);
 
   useEffect(() => {
     loadFavorites();
@@ -19,6 +43,11 @@ const FavoritesScreen = () => {
     const favoriteRecipes = recipes.filter(recipe => recipe.favorite);
     setFavorites(favoriteRecipes);
   };
+  //Chargement d'une recette
+const loadRecipes = async () => {
+  const fetchedRecipes = await getRecipes();
+  setRecipes(fetchedRecipes);
+};
 
   const handleToggleFavorite = async (id: string) => {
     await toggleFavorite(id);
@@ -37,9 +66,19 @@ const FavoritesScreen = () => {
           data={favorites}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
-            <RecipeItem recipe={item} onPress={console.log} onToggleFavorite={handleToggleFavorite} />
+            <RecipeItem recipe={item} onPress={() => openModal(item)} onToggleFavorite={handleToggleFavorite} />
           )}
+          //keyExtractor={item => item.id.toString()}
         />
+         <ScrollView>
+            {selectedRecipe && (
+              <RecipeDetailScreen
+                visible={modalVisible}
+                recipe={selectedRecipe}
+                onClose={closeModal}
+              />
+            )}
+         </ScrollView>  
       </View>
     </ScrollView>
   );

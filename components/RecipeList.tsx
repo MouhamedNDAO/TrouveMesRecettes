@@ -27,7 +27,7 @@ const RecipeList: React.FC<RecipeListProps> = ({ recipes, onRecipePress, onDelet
 };
 
 const styles = StyleSheet.create({
-  item: { padding: 16, borderBottomWidth: 2, borderBottomColor: '#ccc', borderRadius:20, backgroundColor:'#EFE3E9' },
+  item: { padding: 16, borderBottomWidth: 2, borderBottomColor: '#ccc', borderRadius:20, backgroundColor:'#FAF4BB' },
   title: { fontSize: 18 },
   full:{margin:8, flex:3, resizeMode:'contain'}
 });
