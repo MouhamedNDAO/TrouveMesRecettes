@@ -9,6 +9,7 @@ import { Link, useNavigation } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AddRecipe from './AddRecipe';
 import RecipeDetailScreen from './RecipeDetailScreen';
+import SearchBar from './SearchBar';
 
 const HomeScreen = () => {
 const navigation = useNavigation();
@@ -52,6 +53,7 @@ const handleDeleteRecipe = async (id: string) => {
     <ScrollView>
       <View style={styles.container}>
         <Text style={styles.header}>Liste des Recettes</Text>
+        <SearchBar/>
         <FlatList
         data={recipes}
         renderItem={({ item }) => (

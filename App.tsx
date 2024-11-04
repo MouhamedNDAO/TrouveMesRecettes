@@ -46,7 +46,7 @@ function TabNavigator() {
       <Tab.Navigator >
         <Tab.Screen name="Home" component={HomeScreen} 
          options={{
-          tabBarActiveBackgroundColor:'#97F6B9',
+          tabBarActiveBackgroundColor:'#FAF4BB',
           tabBarLabel: 'Home',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={26} />
